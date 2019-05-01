@@ -1,0 +1,26 @@
+{
+  "name": "ecocoin-solidity",
+  "version": "1.0.0",
+  "description": "",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "openzeppelin-solidity": "2.3.0-rc.1"
+  },
+  "devDependencies": {
+    "chai": "*",
+    "chai-as-promised": "^7.1.1",
+    "dotenv": "^6.2.0",
+    "ganache-cli": "^6.4.3",
+    "openzeppelin-test-helpers": "^0.3.2",
+    "truffle-assertions": "^0.8.2",
+    "truffle-hdwallet-provider": "^1.0.4"
+  },
+  "scripts": {
+    "test": "truffle test"
+  },
+  "author": "The ECO coin project",
+  "license": "CC BY 4.0"
+}
