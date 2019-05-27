@@ -20,9 +20,9 @@ contract('ERC20Demurrageable', (accounts) => {
     const demurrageRate = new BN('9985000000000000000000000'); // 0.15% demurrage rate
     const changedDemurrageRate = new BN('9900000000000000000000000'); // 1% demurrage rate
     const tolerance = new BN(100); // error tolerance due to rounding errors
+    const startTime = Math.floor(Date.now() / 1000);
 
     before('deploy ERC20Demurrageable contract', async () => {
-        startTime = Math.floor(Date.now() / 1000);
         accountOne = accounts[0];
         accountTwo = accounts[1];
         demurrageToken = await ERC20DemurrageableMock.new(demurrageRate, 25, startTime, periodDuration);
@@ -244,6 +244,13 @@ contract('ERC20Demurrageable', (accounts) => {
             await truffleAssert.passes(demurrageToken.persistTotalSupplyDemurrage());
             let expected = initialSupply.mul(demurrageRate).div(ONE_RATE);
             (await demurrageToken.totalSupply()).should.be.bignumber.equal(expected);
+        });
+    });
+
+    describe('getStartTimestamp', function () {
+        it('returns the correct timestamp for period 1', async () => {
+            let expected = new BN(startTime + 30 * 24 * 60 * 60);
+            (await demurrageToken.getDate(1)).should.be.bignumber.equal(expected);
         });
     });
 

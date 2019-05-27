@@ -127,6 +127,10 @@ contract ERC20Demurrageable is ERC20Mutable, Ownable, MinterRole, DemurrageChang
         return (timestamp - _period0Beginning) / _periodDuration;
     }
 
+    function getStartTimestamp(uint256 period) public view returns (uint256) {
+        return period * _periodDuration + _period0Beginning;
+    }
+
     /**
      * @dev Total number of tokens in existence.
      * @return Total number of tokens.
