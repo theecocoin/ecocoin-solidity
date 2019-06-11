@@ -250,7 +250,7 @@ contract('ERC20Demurrageable', (accounts) => {
     describe('getStartTimestamp', function () {
         it('returns the correct timestamp for period 1', async () => {
             let expected = new BN(startTime + 30 * 24 * 60 * 60);
-            (await demurrageToken.getDate(1)).should.be.bignumber.equal(expected);
+            (await demurrageToken.getStartTimestamp(1)).should.be.bignumber.equal(expected);
         });
     });
 
